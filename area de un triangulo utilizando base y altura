@@ -1,0 +1,15 @@
+// Area de un triangulo utilizando base y altura
+// Alfredo Magarzo 2007113554
+#include <iostream> 
+#include ”stdafx.h”
+Using manespace std;
+void main()
+{
+float, a, b; 
+cout<<"Dame el valor de la BASE: "; 
+cin>>b; 
+cout<<"Ingresa la Altura: "; 
+cin>>a; 
+sup=b*a/2; 
+cout<<"La superficie del triangulo es:"<<sup;
+} 
