@@ -1,0 +1,25 @@
+// AreadeunTriangulo.cpp: Defines the entry point for the console for the console application.
+// Autor: Alfredo Magarzo
+// Fecha: 06/09/2013
+
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#include "math.h"
+
+using namespace std;
+
+void main ()
+{
+	float area,ladoa,ladob,ladoc, sp;
+	cout<<"ingrese lado 1: ";
+	cin>>ladoa;
+	cout<<"ingrese lado 2: ";
+	cin>>ladob;
+	cout<<"ingrese lado 3: ";
+	cin>>ladoc;
+	sp=(ladoa+ladob+ladoc)/2;
+	area=sqrt(sp*(sp-ladoa)*(sp-ladob)*(sp-ladoc));
+	cout<<"area: "<<area;
+	getch();
+}
