@@ -1,0 +1,17 @@
+// Cuenta de un supermercado
+// Alfredo Magarzo 2007113554
+#include <iostream> 
+#include ”stdafx.h”
+Using manespace std;
+void main()
+{
+float, precio 1, precio 2, precio 3, cantidad 1, cantidad 2, cantidad 3; 
+cout<<"Ingresar precio 1: "; 
+cin>>precio 1; 
+cout<<"Ingresar precio 2: "; 
+cin>>precio 2;
+cout<<"Ingresar precio 3: "; 
+cin>>precio 3;
+s=(precio 1 * cantidad 1)+(precio 2 * cantidad 2)+(precio 3 * cantidad 3); 
+cout<<"El total es:"<<s;
+} 
