@@ -1,0 +1,25 @@
+// algoritm2.cpp : Defines the entry point for the console application.
+// Alfredo Magarzo 2007113554
+
+# include "stdafx.h"
+# include "conio.h"
+# include <iostream>
+
+using namespace std;
+
+void main ()
+{
+ int n;
+ float i,I,K;
+ cout<<"ingrese interes simple I:";
+ cin>>I;
+ cout<<"ingrese tasa de interes i:";
+ cin>>i;
+ cout<<"ingrese cantidad de dias n:";
+ cin>>n;
+
+ K=I/(i*n/360);
+
+ cout<<"El interes smple producido es: "<<K<<" pesos";
+ getch();
+}
