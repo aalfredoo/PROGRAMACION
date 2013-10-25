@@ -1,0 +1,27 @@
+// subprograma.cpp : Defines the entry point for the console application.
+//Autor:Alejandra Sanchez Soto
+
+#include "stdafx.h"
+#include <iostream>
+
+
+float area_cuadrado(float l);
+using namespace std;
+int main()
+
+	{
+		float l,a;
+		cout<<"ingrese el lado:";
+		cin>>l;
+		a=area_cuadrado(l);
+		cout<<"el area es:"<<a;
+		return 0;
+}
+        float area_cuadrado(float l)
+		
+		{
+	    
+		float a=l*l;
+		return a;
+        
+}
