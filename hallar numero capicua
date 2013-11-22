@@ -1,0 +1,47 @@
+// Programa : Hallar numero Capicua
+// Autor : Alfredo Magarzo
+// Fecha : 22/11/13
+// Registro : 2007113554
+
+#include <iostream>
+#include "stdafx.h"
+
+using namespace std;
+
+long invertir( long a )
+{
+   long aux = 0;
+   while( a > 0 )
+   {
+      aux = aux*10 + a%10;
+      a = a / 10;
+   }
+   return aux;
+}
+
+int main()
+{
+   int N, i, cnt;
+   long A, B;
+
+   cin >> N;
+   for( i=0; i<N; i++ )
+   {
+      cin >> A;
+      cnt = 0;
+      while( cnt < 100 )
+      {
+         B = invertir( A );
+         if( A == B )
+         {
+            cout << A << endl;
+            break;
+         } else
+            A = A + B;
+         cnt ++;
+      }
+      if( cnt == 100 )
+         cout << "imposible" << endl;
+   }
+   return 0;
+}
