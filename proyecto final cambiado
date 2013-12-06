@@ -1,0 +1,218 @@
+En este programa cambiamos para aumentar la opcion de poder cambiar la tabla.
+// PROYECTO FINAL PROGRAMACION  ACI.cpp : Defines the entry point for the console application.
+
+// alumnos: Andre Zanky Aguilera, Alfredo Magarzo Javier, Jose Carlo Vaca diez.
+
+
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void cargar_tabla636(vector<float> T636[])
+{
+	float myfloats0[] = {0,2.4,2.6,2.8,3};
+	T636[0]=vector<float>(myfloats0, myfloats0 + sizeof(myfloats0) / sizeof(float) );
+	float myfloats1[] = {9.5,0.5,0.48,0.46,0.44};
+	T636[1]=vector<float>(myfloats1, myfloats1 + sizeof(myfloats1) / sizeof(float) );
+	float myfloats2[] = {12.5,0.59,0.57,0.55,0.53};
+	T636[2]=vector<float>(myfloats2, myfloats2 + sizeof(myfloats2) / sizeof(float) );
+	float myfloats3[] = {19,0.66,0.64,0.62,0.6};
+	T636[3]=vector<float>(myfloats3, myfloats3 + sizeof(myfloats3) / sizeof(float) );
+	float myfloats4[] = {25,0.71,0.69,0.67,0.65};
+	T636[4]=vector<float>(myfloats4, myfloats4 + sizeof(myfloats4) / sizeof(float) );
+	float myfloats5[] = {37.5,0.75,0.73,0.71,0.69};
+	T636[5]=vector<float>(myfloats5, myfloats5 + sizeof(myfloats5) / sizeof(float) );
+	float myfloats6[] = {50,0.78,0.76,0.74,0.72};
+	T636[6]=vector<float>(myfloats6, myfloats6 + sizeof(myfloats6) / sizeof(float) );
+	float myfloats7[] = {75,0.82,0.8,0.78,0.76};
+	T636[7]=vector<float>(myfloats7, myfloats7 + sizeof(myfloats7) / sizeof(float) );
+}
+
+void cargar_tabla633(vector<float> T633[])
+{
+	float myfloats0[] = {0,0,9.5,12.5,19,25,38,50,75,150};
+	T633[0]=vector<float>(myfloats0, myfloats0 + sizeof(myfloats0) / sizeof(float) );
+	float myfloats1[] = {2.5,5.0,207,199,190,179,166,154,130,133};
+	T633[1]=vector<float>(myfloats1, myfloats1 + sizeof(myfloats1) / sizeof(float) );
+	float myfloats2[] = {7.5,10,228,216,205,193,181,169,145,124};
+	T633[2]=vector<float>(myfloats2, myfloats2 + sizeof(myfloats2) / sizeof(float) );
+	float myfloats3[] = {15,17.5,243,228,216,202,190,178,160,150};
+	T633[3]=vector<float>(myfloats3, myfloats3 + sizeof(myfloats3) / sizeof(float) );
+}
+
+void cargar_tabla634(vector<float> T634[])
+{
+	float myfloats0[] = {420,350,290,280,210,140};
+	T634[0]=vector<float>(myfloats0, myfloats0 + sizeof(myfloats0) / sizeof(float) );
+	float myfloats1[] = {0.41,0.48,0.55,0.57,0.68,0.82};
+	T634[1]=vector<float>(myfloats1, myfloats1 + sizeof(myfloats1) / sizeof(float) );
+}
+
+void cargar_tabla637(vector<float> T637[])
+{
+	float myfloats0[] = {3.5,12.5,19,25,37.5,50,75};
+	T637[0]=vector<float>(myfloats0, myfloats0 + sizeof(myfloats0) / sizeof(float) );
+	float myfloats1[] = {2280,2310,2345,2380,2410,2445,2490};
+	T637[1]=vector<float>(myfloats1, myfloats1 + sizeof(myfloats1) / sizeof(float) );
+}
+
+float interpolar636(vector<float> T636[],float TMAG,float x)
+{
+	float resp,T1,T2;
+	int i,j;
+	i=2;
+	while(i<4 && T636[0][i] < x)
+	{
+		i++;
+	}
+	j=2;
+	while(j<7 && T636[j][0] < TMAG)
+	{
+		j++;
+	}
+	T1 = T636[j-1][i-1]+(T636[j-1][i]-T636[j-1][i-1])*(x-T636[0][i-1])/(T636[0][i]-T636[0][i-1]);
+	T2 = T636[j][i-1]+(T636[j][i]-T636[j][i-1])*(x-T636[0][i-1])/(T636[0][i]-T636[0][i-1]);
+	resp = T1 + (T2-T1)*(TMAG-T636[j-1][0])/(T636[j][0]-T636[j-1][0]);
+	return resp;	
+}
+
+float interpolar633(vector<float> T633[],float As,float TMAG)
+{
+	float resp,T1,T2;
+	int i,j;
+	i=3;
+	while(i<10 && T633[0][i] < TMAG)
+	{
+		i++;
+	}
+	j=2;
+	while(j<4 && T633[j][1] < As)
+	{
+		j++;
+	}
+	T1 = T633[j-1][i-1]+(T633[j-1][i]-T633[j-1][i-1])*(TMAG-T633[0][i-1])/(T633[0][i]-T633[0][i-1]);
+	T2 = T633[j][i-1]+(T633[j][i]-T633[j][i-1])*(TMAG-T633[0][i-1])/(T633[0][i]-T633[0][i-1]);
+	if(As < T633[j-1][1])
+	{
+		return T1;
+	}
+	else
+	{
+		resp = T1 + (T2-T1)*(As-T633[j-1][1])/(T633[j][0]-T633[j-1][1]);
+		return resp;	
+	}
+}
+//float interpolar634(vector<float> T634[],float fcm)
+float interpolar634(float T634[][6],float fcm)
+{	
+	float resp,T1,T2;
+	int i,j;
+	i=1;
+	while(i<5 && T634[0][i] > fcm)
+	{
+		i++;
+	}
+	return (T634[1][i-1] + (T634[1][i]-T634[1][i-1])*(fcm-T634[0][i-1])/(T634[0][i]-T634[0][i-1]));
+}
+
+float interpolar637(vector<float> T637[],float TMAG)
+{	
+	float resp,T1,T2;
+	int i,j;
+	i=1;
+	while(i<5 && T637[0][i] < TMAG)
+	{
+		i++;
+	}
+	return (T637[1][i-1] + (T637[1][i]-T637[1][i-1])*(TMAG-T637[0][i-1])/(T637[0][i]-T637[0][i-1]));
+}
+
+int main()
+{
+	vector<float> T636[8];
+	cargar_tabla636(T636);
+	vector<float> T633[4];
+	cargar_tabla633(T633);
+	//vector<float> T634[2];
+	//cargar_tabla634(T634);
+	float T634[2][6];
+	vector<float> T637[2];
+	cargar_tabla637(T637);
+	int op;
+	int fck;
+	int Asentamiento;
+	//int cementoIF = 30;
+	//float peso_especifico_cem;
+	//int temp;
+	int TMAG;
+	//float peso_especifico_agreg;
+	float modulo_agreg;
+	//float humedad_grueso;
+	//float humedad_fino;
+	float fcm;
+	float A,A_C,C,AG,AF,x;
+	do
+	{
+		cout<<"1 ingresar datos"<<endl;
+		cout<<"2 reporte"<<endl;
+
+		cout<<"3 cargar tabla 634"<<endl;
+
+		cout<<"0 salir"<<endl;
+		cout<<"opcion:";
+		cin>>op;
+		switch(op)
+		{
+		case 1:
+			cout<<"FCK:";
+			cin>>fck;
+			cout<<"Asentamiento:";
+			cin>>Asentamiento;
+			//cout<<"Cemento IF:";
+			//cin>>cementoIF;
+			//cout<<"Peso especifico del cemento:";
+			//cin>>peso_especifico_cem;
+			//cout<<"Temperatura(ºC):";
+			//cin>>temp;
+			cout<<"TMAG:";
+			cin>>TMAG;
+			//cout<<"Peso especifico agregado:";
+			//cin>>peso_especifico_agreg;
+			cout<<"Modulo de Agregado fino:";
+			cin>>modulo_agreg;
+			//cout<<"Humedad de Grueso:";
+			//cin>>humedad_grueso;
+			//cout<<"Humedad de Fino:";
+			//cin>>humedad_fino;
+			break;
+		case 2:
+			fcm = 1.2*fck +10;
+			A = interpolar633(T633,Asentamiento,TMAG);
+			A_C = interpolar634(T634,fcm);
+			C = A/A_C;
+			x = interpolar636(T636,TMAG,modulo_agreg);
+			AG = x*1808;
+			x = interpolar637(T637,TMAG);
+			AF = x - (A + C + AG);
+			cout<<"Agua:"<<A<<endl;
+			cout<<"Cemento:"<<C<<endl;
+			cout<<"Agregado Grueso:"<<AG<<endl;
+			cout<<"Agregado Fino:"<<AF<<endl;
+			break;
+		case 3:
+			int i,j;
+			for(i=0;i<6;i++)
+			{
+				for(j=0;j<2;j++)
+				{
+					cout<<"elemento "<<i<<","<<j<<":";
+					cin>>T634[j][i];
+				}
+			}
+		}
+	}while(op!=0);
+	return 0;
+}
+
+
